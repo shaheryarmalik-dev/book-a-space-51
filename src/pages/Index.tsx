@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Navbar } from "@/components/ui/navbar";
 import { HeroSection } from "@/components/ui/hero-section";
 import { LocationCard } from "@/components/ui/location-card";
+import { TestimonialsSection } from "@/components/ui/testimonials-section";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -98,6 +99,9 @@ const Index = () => {
           </div>
         )}
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* Footer */}
       <footer className="bg-gradient-primary text-primary-foreground py-12">

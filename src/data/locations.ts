@@ -120,5 +120,49 @@ export const locations: Location[] = [
     capacity: 60,
     amenities: ['Premium Views', 'Full Bar', 'Luxury Furnishings', 'Outdoor Terrace', 'Private Elevator', 'Concierge Service'],
     category: 'party'
+  },
+  {
+    id: '11',
+    name: 'Eclectic Creative Space | Crystals, Buddha, Natural Light – L.A. Gem',
+    description: 'A unique creative sanctuary featuring natural crystals, Buddha statues, and abundant natural light. This eclectic space offers a peaceful, spiritual atmosphere perfect for wellness events, creative workshops, and intimate gatherings.',
+    hourlyRate: 57,
+    address: 'Central LA, Los Ángeles, CA',
+    image: '/src/assets/creative-space.jpg',
+    capacity: 25,
+    amenities: ['Natural Light', 'Crystal Decor', 'Buddha Statues', 'Meditation Space', 'Creative Setup', 'Peaceful Atmosphere'],
+    category: 'corporate'
+  },
+  {
+    id: '12',
+    name: 'Joshua Tree Oasis',
+    description: 'Desert retreat nestled in the mystical Joshua Tree landscape. Perfect for unique outdoor events, spiritual gatherings, and creative retreats with stunning desert views and natural beauty as your backdrop.',
+    hourlyRate: 70,
+    address: 'Joshua Tree, CA',
+    image: '/src/assets/joshua-tree.jpg',
+    capacity: 40,
+    amenities: ['Desert Views', 'Natural Setting', 'Outdoor Space', 'Stargazing', 'Hiking Access', 'Peaceful Environment'],
+    category: 'outdoor'
+  },
+  {
+    id: '13',
+    name: 'Eclectic Creative Space | Crystals, Buddha, Natural Light – L.A. Gem (Production)',
+    description: 'The production-ready version of our creative sanctuary, equipped with professional lighting and camera-friendly setup. Ideal for film productions, photography shoots, and professional creative content creation.',
+    hourlyRate: 60,
+    address: 'Central LA, Los Ángeles, CA',
+    image: '/src/assets/creative-space-production.jpg',
+    capacity: 30,
+    amenities: ['Production Lighting', 'Camera Setup', 'Natural Light', 'Crystal Decor', 'Professional Equipment', 'Quiet Environment'],
+    category: 'corporate'
+  },
+  {
+    id: '14',
+    name: 'Joshua Tree Oasis (Production)',
+    description: 'Desert oasis equipped for professional productions with power access and equipment-friendly terrain. Perfect for film shoots, photo sessions, and commercial productions in the iconic Joshua Tree setting.',
+    hourlyRate: 70,
+    address: 'Joshua Tree, CA',
+    image: '/src/assets/joshua-tree-production.jpg',
+    capacity: 50,
+    amenities: ['Power Access', 'Equipment Setup', 'Desert Views', 'Production Ready', 'Vehicle Access', 'Professional Support'],
+    category: 'outdoor'
   }
 ];

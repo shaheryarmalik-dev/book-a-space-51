@@ -60,7 +60,7 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 glass border-b border-border/50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - Placeholder for custom logo upload */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="h-8 w-8 bg-gradient-primary rounded-lg flex items-center justify-center">
               <Calendar className="h-5 w-5 text-primary-foreground" />
