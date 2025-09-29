@@ -1,84 +1,71 @@
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Calendar, LogIn, User, Menu } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Button } from "./button";
+import { useNavigate } from "react-router-dom";
+import { Menu, X, Search, Calendar } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userRole, setUserRole] = useState<'user' | 'admin'>('user');
-
-  const navItems = [
-    { name: 'Venues', href: '/' },
-    { name: 'My Bookings', href: '/dashboard' },
-    ...(userRole === 'admin' ? [{ name: 'Admin', href: '/admin' }] : []),
-  ];
-
-  const NavContent = () => (
-    <>
-      {navItems.map((item) => (
-        <Link
-          key={item.name}
-          to={item.href}
-          className="text-foreground hover:text-primary transition-colors font-medium"
-        >
-          {item.name}
-        </Link>
-      ))}
-      
-      <div className="flex items-center gap-3">
-        {isLoggedIn ? (
-          <>
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/dashboard">
-                <User className="h-4 w-4 mr-2" />
-                Profile
-              </Link>
-            </Button>
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={() => setIsLoggedIn(false)}
-            >
-              Logout
-            </Button>
-          </>
-        ) : (
-          <Button variant="outline" size="sm" asChild>
-            <Link to="/login">
-              <LogIn className="h-4 w-4 mr-2" />
-              Login
-            </Link>
-          </Button>
-        )}
-      </div>
-    </>
-  );
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
-    <nav className="sticky top-0 z-50 glass border-b border-border/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo - Placeholder for custom logo upload */}
+          {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="h-8 w-8 bg-gradient-primary rounded-lg flex items-center justify-center">
               <Calendar className="h-5 w-5 text-primary-foreground" />
             </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold gradient-text">EventSpace</span>
-              <span className="text-xs text-muted-foreground">Premium Venue Booking</span>
-            </div>
+            <div className="text-2xl font-bold text-primary">EventSpace</div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <NavContent />
+          {/* Search Bar */}
+          <div className="hidden lg:flex flex-1 max-w-md mx-8">
+            <div className="relative w-full">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search venues..."
+                className="w-full pl-10 pr-4 py-2 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Navigation Links */}
+          <nav className="hidden md:flex items-center space-x-6">
+            <a href="#venues" className="text-muted-foreground hover:text-primary transition-colors font-medium">
+              Venues
+            </a>
+            <a href="#host" className="text-muted-foreground hover:text-primary transition-colors font-medium">
+              Host
+            </a>
+            <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors font-medium">
+              Contact
+            </a>
+          </nav>
+
+          {/* Auth Buttons */}
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              onClick={() => navigate('/login')}
+              className="hidden sm:inline-flex"
+            >
+              Login
+            </Button>
+            <Button
+              onClick={() => navigate('/login')}
+              className="bg-primary hover:bg-primary/90 text-white font-medium"
+            >
+              Book Now
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <Sheet>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="sm">
                   <Menu className="h-5 w-5" />
@@ -86,7 +73,15 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-80">
                 <div className="flex flex-col space-y-6 mt-8">
-                  <NavContent />
+                  <a href="#venues" className="text-lg font-medium">Venues</a>
+                  <a href="#host" className="text-lg font-medium">Host</a>
+                  <a href="#contact" className="text-lg font-medium">Contact</a>
+                  <Button onClick={() => navigate('/login')} className="justify-start">
+                    Login
+                  </Button>
+                  <Button onClick={() => navigate('/login')} className="justify-start bg-primary">
+                    Book Now
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
